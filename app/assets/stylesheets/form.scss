@@ -1,6 +1,6 @@
 @import './variables';
 
-.sign-title{
+label[for='email']{
 position: absolute;
 height: 36px;
 left: 0%;
@@ -13,54 +13,44 @@ font-weight: 800;
 font-size: 26px;
 line-height: 36px;
 color: red;
-/* identical to box height */
-
-
-color: #000000;
 }
 
 
-    .email_field{
-        position: absolute;
-        width: 362px;
-        height: 40px;
-        left: 26px;
-        top: 190px;
+#user_email{
+position: absolute;
+width: 362px;
+height: 40px;
+left: 26px;
+top: 190px;
 
-        background: #F4F4F4;
-        border-radius: 10px;
-    }
+background: #F4F4F4;
+border-radius: 10px;
+}
 
-    .password_field{
-        position: absolute;
-        width: 362px;
-        height: 40px;
-        left: 26px;
-        top: 295px;
+#user_password{
+position: absolute;
+width: 362px;
+height: 40px;
+left: 26px;
+top: 295px;
 
-        background: #F4F4F4;
-        border-radius: 10px;
-    }
+background: #F4F4F4;
+border-radius: 10px;
+}
 
-    .label{
-        position: absolute;
-        width: 44px;
-        height: 25px;
-        left: 26px;
-        top: 161px;
+#user_password_confirmation{
+position: absolute;
+width: 362px;
+height: 40px;
+left: 26px;
+top: 385px;
 
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 25px;
-        /* identical to box height */
+background: #F4F4F4;
+border-radius: 10px;
+}
 
 
-        color: #000000;
-    }
-
-.action{
+#actions{
 position: absolute;
 width: 362px;
 height: 40px;
