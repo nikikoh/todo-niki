@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
-  def index
-    render 'pages/index'
-  end
+  def index; end
 
-  def show
-  end
+  def show; end
+
+  def users; end
+
+  def new; end
 end
