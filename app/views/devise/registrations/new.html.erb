@@ -3,12 +3,6 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-    <!--サインアップ時に名前を入力できるようにフォームを追加-->
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-  
     <!--email-->
   <div class="field">
     <%= f.label :email %><br />
@@ -37,4 +31,3 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>

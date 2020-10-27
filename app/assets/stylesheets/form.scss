@@ -19,46 +19,45 @@ color: red;
 color: #000000;
 }
 
-.field{
-    .email_field{
-        position: absolute;
-        width: 362px;
-        height: 40px;
-        left: 26px;
-        top: 190px;
 
-        background: #F4F4F4;
-        border-radius: 10px;
-    }
+.user_email{
+    position: absolute;
+    width: 362px;
+    height: 40px;
+    left: 26px;
+    top: 190px;
 
-    .password_field{
-        position: absolute;
-        width: 362px;
-        height: 40px;
-        left: 26px;
-        top: 295px;
+    background: #F4F4F4;
+    border-radius: 10px;
+}
 
-        background: #F4F4F4;
-        border-radius: 10px;
-    }
+.password_field{
+    position: absolute;
+    width: 362px;
+    height: 40px;
+    left: 26px;
+    top: 295px;
 
-    .label{
-        position: absolute;
-        width: 44px;
-        height: 25px;
-        left: 26px;
-        top: 161px;
+    background: #F4F4F4;
+    border-radius: 10px;
+}
 
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 25px;
-        /* identical to box height */
+.label{
+    position: absolute;
+    width: 44px;
+    height: 25px;
+    left: 26px;
+    top: 161px;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    /* identical to box height */
 
 
-        color: #000000;
-    }
+    color: #000000;
 }
 
 .action{
