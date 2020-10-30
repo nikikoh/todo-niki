@@ -1,13 +1,29 @@
 @import './variables';
 
-label[for='email']{
-position: absolute;
+h2{
+    height: 36px;
+    left: 0%;
+    right: 49.73%;
+
+    
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 36px;
+    /* identical to box height */
+    
+    
+    color: #000000;    
+}
+
+label{
 height: 36px;
 left: 0%;
 right: 54.64%;
 top: calc(50% - 36px/2);
 
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-family:sans-serif 'Arial Narrow', Arial, sans-serif;
 font-style: normal;
 font-weight: 800;
 font-size: 26px;
@@ -17,7 +33,6 @@ color: black;
 
 
 #user_email{
-position: absolute;
 width: 362px;
 height: 40px;
 left: 26px;
@@ -28,7 +43,6 @@ border-radius: 10px;
 }
 
 #user_password{
-position: absolute;
 width: 362px;
 height: 40px;
 left: 26px;
@@ -39,7 +53,6 @@ border-radius: 10px;
 }
 
 #user_password_confirmation{
-position: absolute;
 width: 362px;
 height: 40px;
 left: 26px;
@@ -50,14 +63,42 @@ border-radius: 10px;
 }
 
 
-#actions{
-position: absolute;
-width: 362px;
-height: 40px;
-left: 30px;
-top: 889px;
+.actions{
+    width: 362px;
+    height: 40px;
+    left: 30px;
+    top: 889px;
+    border-radius: 4px;
+    :hover{
+    opacity: 0.6;
+    }
+}
 
-background: #F8BD1C;
-border-radius: 4px;
-transform: matrix(1, 0, 0, -1, 0, 0);
+input{
+    width: 362px;
+    height: 40px;
+    left: 30px;
+    top: 889px;
+    border-radius: 4px;
+    
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 25px;
+    /* identical to box height */
+    
+    
+    color: black;
+    background: #F8BD1C;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    
+}
+
+a:hover{
+    opacity: 0.6;
 }
