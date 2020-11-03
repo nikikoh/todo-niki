@@ -1,25 +1,79 @@
 @import './variables';
 
-.sign-title{
-position: absolute;
+h2{
+    height: 36px;
+    left: 0%;
+    right: 49.73%;
+
+    
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 36px;
+    /* identical to box height */
+    
+    
+    color: #000000;    
+}
+
+label{
 height: 36px;
 left: 0%;
 right: 54.64%;
 top: calc(50% - 36px/2);
 
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-family:sans-serif 'Arial Narrow', Arial, sans-serif;
 font-style: normal;
 font-weight: 800;
 font-size: 26px;
 line-height: 36px;
-color: red;
-/* identical to box height */
-
-
-color: #000000;
+color: black;
 }
 
 
+<<<<<<< HEAD
+#user_email{
+width: 362px;
+height: 40px;
+left: 26px;
+top: 190px;
+
+background: #F4F4F4;
+border-radius: 10px;
+}
+
+#user_password{
+width: 362px;
+height: 40px;
+left: 26px;
+top: 295px;
+
+background: #F4F4F4;
+border-radius: 10px;
+}
+
+#user_password_confirmation{
+width: 362px;
+height: 40px;
+left: 26px;
+top: 385px;
+
+background: #F4F4F4;
+border-radius: 10px;
+}
+
+
+.actions{
+    width: 362px;
+    height: 40px;
+    left: 30px;
+    top: 889px;
+    border-radius: 4px;
+    :hover{
+    opacity: 0.6;
+    }
+=======
 .user_email{
     position: absolute;
     width: 362px;
@@ -58,16 +112,34 @@ color: #000000;
 
 
     color: #000000;
+>>>>>>> master
 }
 
-.action{
-position: absolute;
-width: 362px;
-height: 40px;
-left: 30px;
-top: 889px;
+input{
+    width: 362px;
+    height: 40px;
+    left: 30px;
+    top: 889px;
+    border-radius: 4px;
+    
+    font-family: Avenir;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 25px;
+    /* identical to box height */
+    
+    
+    color: black;
+    background: #F8BD1C;
+}
 
-background: #F8BD1C;
-border-radius: 4px;
-transform: matrix(1, 0, 0, -1, 0, 0);
+a{
+    text-decoration: none;
+    color: black;
+    
+}
+
+a:hover{
+    opacity: 0.6;
 }
