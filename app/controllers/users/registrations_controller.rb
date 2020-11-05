@@ -6,27 +6,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    User.find_by(name: super)
+    Users.find_by(name: params[:id])
   end
 
   # POST /resource
   def create
-    User.find_by(name: super)
+    Users.find_by(name: params[:id])
   end
 
   # GET /resource/edit
   def edit
-    User.find_by(name: super)
+    Users.find_by(name: params[:id])
   end
 
   # PUT /resource
   def update
-    User.find_by(name: super)
+    Users.find_by(name: params[:id])
   end
 
   # DELETE /resource
   def destroy
-    User.find_by(name: super)
+    Users.find_by(name: params[:id])
   end
 
   # GET /resource/cancel
