@@ -6,6 +6,5 @@ class UsersController < ApplicationController
   end
 
   def create
-    @users = current_user.articles.build(users_params)
   end
 end
