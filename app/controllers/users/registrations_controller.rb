@@ -6,12 +6,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    Users.find_by(name: params[:id])
+    Users.find_by(name: users)
   end
 
   # POST /resource
   def create
-    Users.find_by(name: params[:id])
+    Users.find_by(name: users)
   end
 
   # GET /resource/edit
