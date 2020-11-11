@@ -1,17 +1,18 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_permitted_parameters, only: [:new, :create]
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
-    Users.find_by(name: users)
+    @user = User.new
   end
 
   # POST /resource
   def create
-    Users.find_by(name: users)
+    @profile = @user.build_profile
+    @user = User.create
   end
 
   # GET /resource/edit
