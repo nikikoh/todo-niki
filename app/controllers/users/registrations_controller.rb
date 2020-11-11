@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_permitted_parameters, only: [:new, :create]
+  before_action :configure_permitted_parameters, only: %i[new create]
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -13,6 +13,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @profile = @user.build_profile
     @user = User.create
+    resource.build_profile
+    resource.profile.name = resource.username
+    resource.save
   end
 
   # GET /resource/edit
@@ -43,5 +46,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
+
+  # アカウント編集後、プロフィール画面に移動する
+  def after_update_path_for(_resource)
+    user_path(id: current_user.id)
   end
 end
