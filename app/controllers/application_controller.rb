@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-   # ログイン後、blogs/indexに移動する
+  #ログイン後、tasks_indexに遷移
   def after_sign_in_path_for(_resource)
     tasks_index_path
   end
