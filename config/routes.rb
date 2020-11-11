@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   }
   resources :users, only: %i[show edit update destroy]
   resources :tasks
+  resource :profile, only: [:new, :create, :edit, :update] do
+    post :confirm, on: :collection
+  end
 
   devise_scope :user do
     get 'sign_in', to: 'users/registrations#new'

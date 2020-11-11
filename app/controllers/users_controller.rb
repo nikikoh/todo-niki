@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @profile = Profile.new
     @user = User.save
   end
 
