@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @profile = @user.build_profile
+    @profile = User.build_profile
     @user = User.create
     resource.build_profile
     resource.profile.name = resource.username
