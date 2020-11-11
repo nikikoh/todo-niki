@@ -7,4 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true # 追記
   validates :profile, length: { maximum: 200 } # 追記
+
+  has_one :profile
 end
