@@ -11,8 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @user = User.create
-    @profile = current_user.build_profile
+    binding.pry
+    @profile = resource.build_profile
+    resource.profile.name = resource.username
+    resource.save
   end
 
   # GET /resource/edit
