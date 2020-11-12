@@ -12,11 +12,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create
-    @profile = Profile.create
     @user = User.save
-  end
-
-  def mypage
-    redirect_to user_path(current_user)
   end
 end
