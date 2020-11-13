@@ -12,9 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @user = User.create
-    resource.build_profile
-    resource.profile.name = resource.username
-    resource.save
+    @user.build_profile
+    @user.profile.name = @user.username
+    @user.save
     redirect_to @user
   end
 
