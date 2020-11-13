@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:mypage]
 
   def new
     @user = User.new
@@ -13,5 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = User.create
     @user = User.save
+  end
+
+  def index
   end
 end
