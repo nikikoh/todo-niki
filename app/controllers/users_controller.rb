@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
     @user = User.save
@@ -14,6 +13,5 @@ class UsersController < ApplicationController
     @user = User.save
   end
 
-  def index
-  end
+  def index; end
 end

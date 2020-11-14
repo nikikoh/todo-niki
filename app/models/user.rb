@@ -7,5 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true # 追記
   validates :profile, length: { maximum: 200 } # 追記
 
-  has_one :profile
+  has_one :user, dependent: :destroy
+  has_one :profile, dependent: :destroy
+  has_many :boards, dependent: :destroy
 end
