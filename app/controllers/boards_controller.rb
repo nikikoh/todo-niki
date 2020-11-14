@@ -5,6 +5,7 @@ class BoardsController < ApplicationController
   end
 
   def store
+    #ここのstateやlimit_dateが使えないので、マイグレーションのテーブルがおかしい？
     board = Board.new
     board.board      = params[:board]
     board.state      = params[:state]
