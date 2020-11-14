@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2020_11_14_095124) do
     t.string "avatar"
     t.text "description"
     t.integer "user_id"
+    t.text "state"
+    t.text "task"
+    t.date "limit_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -5,10 +5,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-@board = board.new
-@user = User.find(params[:id])
-@board.board = @user
-@board.status = 'test'
-@board.limit_date = '2020-11-13'
-@board.save
