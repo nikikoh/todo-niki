@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.create
     @user.build_profile
-    @user.profile.name = @user.username
+    @user.profile.name = @user.user
     @user.save
     redirect_to @user
   end

@@ -1,11 +1,13 @@
 class BoardsController < ApplicationController
   def index
-    @boards = Board.order(:limit_date).all
+    
+    binding.pry
+    
+    @boards = Board.order("limit_date").all
     @state = %w[TODO DOING FINISH]
   end
 
-  def store
-    #ここのstateやlimit_dateが使えないので、マイグレーションのテーブルがおかしい？
+  def create
     board = Board.new
     board.board      = params[:board]
     board.state      = params[:state]
