@@ -1,0 +1,2 @@
+namespace :boards do
+end
