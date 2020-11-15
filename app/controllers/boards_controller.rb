@@ -2,40 +2,38 @@ class BoardsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @boards = Board.order('limit_date').all
-    @state = %w[TODO DOING FINISH]
+    @boards = Board.all
+  end
+
+  def new
+    @board = current_user.boards.build
   end
 
   def create
     board = Board.new
-    board.board      = params[:board]
-    board.state      = params[:state]
-    board.limit_date = params[:limit_date]
-    board.save
-    redirect_to '/boards', notice: 'ボードを作成しました。'
+    if board.save
+      redirect_to '/boards', notice: '作成しました。'
+    else 
+      flash.now[:error] = '作成に失敗しました。'
+      render action: :new
+    end
   end
 
   def show
     @board = Board.find(params[id])
-    @status = %w[todo doing done]
   end
 
   def update
     id = params[:id]
     board = board.find(id)
-
-    board.board        = params[:board]
-    board.state        = params[:state]
-    board.limit_date   = params[:limit_date]
     board.save
-
-    redirect_to '/boards', notice: 'ボードを更新しました。'
+    redirect_to '/boards', notice: '更新しました。'
   end
 
   def destroy
     board = board.find(params[:id])
     board.destroy
-    redirect_to '/boards', notice: 'ボードを削除しました'
+    redirect_to '/boards', notice: '削除しました。'
   end
 
   private

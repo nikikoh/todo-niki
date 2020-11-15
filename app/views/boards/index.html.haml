@@ -1,0 +1,9 @@
+.container.tabs
+  .wrap.tabs
+    %p.header_text Bords
+    .border_room
+    %h1.tabs-text All Boards
+    - @boards.each do |board|
+      = render 'commons/board', board: board
+    = link_to new_board_path do
+      .add-new-board +Add new board
