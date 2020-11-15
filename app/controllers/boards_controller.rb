@@ -1,9 +1,8 @@
 class BoardsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    
-    binding.pry
-    
-    @boards = Board.order("limit_date").all
+    @boards = Board.order('limit_date').all
     @state = %w[TODO DOING FINISH]
   end
 
@@ -17,8 +16,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    id = params[:id]
-    @board = Board.find(id)
+    @board = Board.find(params[id])
     @status = %w[todo doing done]
   end
 
@@ -38,5 +36,11 @@ class BoardsController < ApplicationController
     board = board.find(params[:id])
     board.destroy
     redirect_to '/boards', notice: 'ボードを削除しました'
+  end
+
+  private
+
+  def set_board
+    @boards
   end
 end

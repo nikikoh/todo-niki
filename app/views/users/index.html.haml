@@ -1,0 +1,4 @@
+.container
+  %h3 ユーザー一覧
+  - @user.each do |user|
+    = link_to 'ユーザー名:#{user.email}', user_path(user.id)

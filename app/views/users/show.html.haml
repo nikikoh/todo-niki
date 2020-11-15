@@ -1,0 +1,4 @@
+.container
+  %h3 ユーザー詳細
+  %h2= @user.email
+  - if @user.id == current_user.id
