@@ -1,0 +1,13 @@
+.container
+  %ul
+      / eroors.full_message.each do~ 
+      / vallidateした時にエラーメッセージを表示する
+      - board.erorrs.full_message.each do |message|
+        %li= message
+      %h2
+    / 入力フォームを作成 form_with(モデル or URLスペース,[scope],[option]) do |f|
+    = form_with(model: board, local: true) do |f|
+      %div.table_label
+        = f.label :title, 'Name'
+      %div.text_field
+        =f.label :content, 'Description'
