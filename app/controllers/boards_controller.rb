@@ -39,6 +39,6 @@ class BoardsController < ApplicationController
   private
 
   def set_board
-    @boards
+    @board = Board.find(params[:id])
   end
 end
