@@ -12,9 +12,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+<<<<<<< HEAD
     @user = User.new!
     @user.save
     render templete: 'boards/index'
+=======
+    @user = User.creater
+    @user.save
+>>>>>>> 04bb36f9d918a560988a6743fe72f18e7363aa68
   end
 
   # GET /resource/edit
