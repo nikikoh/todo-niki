@@ -1,6 +1,8 @@
 .container.tabs
   .wrap.tabs
     %p.header_text Boards
+    - if user_signed_in?
+      %p= link_to 'ログアウト',destroy_user_session_path, method: :delete
     .border_room
     %h1.tabs-text All Boards
     - @boards.each do |board|
