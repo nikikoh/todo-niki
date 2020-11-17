@@ -1,7 +1,0 @@
-.container
-  %h3 ユーザー一覧
-  - @user.each do |user|
-    = link_to 'ユーザー名:#{user.email}', user_path(user.id)
-  %h3 ボード作成 
-  - @board.each do |board|
-    = link_to 'ボード作成', boards_path, class: 'btn, btn-default'
