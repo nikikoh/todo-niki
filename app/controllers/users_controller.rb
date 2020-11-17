@@ -1,20 +1,19 @@
 class UsersController < ApplicationController
   def index
-    @user = User.all
-    @board = Board.new
+    @user = User.create!
+    if user_signed_in? == @user.id
+      render templete: 'boards/index'
+    else
+      flash.now[:error] = 'ログインに失敗しました'
+      redirect_to new_user_registration_path
+    end
   end
 
   def new
-    @user = User.new
-    @user = User.save
+
   end
 
   def show
     @user = User.find(params[:id])
-  end
-
-  def create
-    @user = User.create
-    @user = User.save
   end
 end

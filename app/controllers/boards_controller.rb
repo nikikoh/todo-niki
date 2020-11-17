@@ -2,7 +2,8 @@ class BoardsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @boards = Board.all
+    @board = current_user.boards.build
+    @board.save
   end
 
   def new
@@ -13,7 +14,7 @@ class BoardsController < ApplicationController
     board = Board.new
     if board.save
       redirect_to '/boards', notice: '作成しました。'
-    else 
+    else
       flash.now[:error] = '作成に失敗しました。'
       render action: :new
     end
