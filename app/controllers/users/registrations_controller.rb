@@ -12,11 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    @user = User.create
-    @user.build_profile
-    @user.profile.name = @user.user
+    @user = User.new!
     @user.save
-    redirect_to @user
+    render templete: 'boards/index'
   end
 
   # GET /resource/edit
