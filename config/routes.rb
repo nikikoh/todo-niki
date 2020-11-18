@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  
-  resources :users
-  resources :boards
 
+  root to: 'boards#index'
+  
+  resources :boards
 end
