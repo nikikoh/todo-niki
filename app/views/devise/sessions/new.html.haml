@@ -2,14 +2,13 @@
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
-    = f.label :email, class: 'label_title'
+    = f.label :name, class: 'label_title'
     %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email", class: 'date_room'
+    = f.text_field :name, autofocus: true, autocomplete: "name", class: 'date_room'
   .field
     = f.label :password, class: 'label_title'
     %br/
     = f.password_field :password, autocomplete: "current-password",class: 'date_room'
   - if devise_mapping.rememberable?
   .actions
-    = f.submit "Submit", class: 'sign_up_btn'
-= render "devise/shared/links"
+    = f.submit "Submit", class: 'submit_btn'
