@@ -1,16 +1,15 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         authentication_keys: [:name]
 
-  validates :email, uniqueness: true
   validates :name,  uniqueness: true
 
-  # 登録時にemailを不要とする
-  def email_required?
-    false
-  end
+  # usernameを必須とする
+  validates_uniqueness_of :name
+  validates_presence_of :name
 
-  # no use email
+  # 登録時にemailを不要とする
   def email_required?
     false
   end
