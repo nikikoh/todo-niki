@@ -37,6 +37,7 @@ group :development, :test do
   gem 'jquery-rails'
   gem 'pry-doc'
   gem 'pry-rails'
+  gem 'rails-i18n'
   gem 'rb-readline'
 end
 

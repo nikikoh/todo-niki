@@ -2,9 +2,7 @@ class BoardsController < ApplicationController
   before_action :set_board, only: [:show]
 
   def index
-    @boards = Board.all.order(created_at: :desc)
-    board = current_user.boards.build
-    board.save
+    @boards = Board.all
   end
 
   def new
@@ -46,5 +44,9 @@ class BoardsController < ApplicationController
 
   def set_board
     @board = Board.find(params[:id])
+  end
+
+  def board_build
+    Board.new
   end
 end
