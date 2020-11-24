@@ -1,11 +1,12 @@
-.container.tabs
+.container
   .wrap.tabs
     %p.header_text Boards
-    - if user_signed_in?
-      %p= link_to 'ログアウト',destroy_user_session_path, method: :delete
     .border_room
     %h1.tabs-text All Boards
-    - @boards.each do |board|
-      = render 'commons/board', board: board
-    = link_to new_board_path do
-      .add-new-board +Add new board
+    .row.tabs-box
+      .col.task-card
+        - @boards.each do |board|
+          - 
+      .col.add-task
+        - link_to board_path do
+          %p.add-new-board +Add new board

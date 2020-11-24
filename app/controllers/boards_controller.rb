@@ -1,9 +1,8 @@
 class BoardsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_board, only: [:show]
 
   def index
-    @board = current_user.boards.build
-    @board.save
+    @boards = Board.all
   end
 
   def new
@@ -25,7 +24,7 @@ class BoardsController < ApplicationController
   end
 
   def update
-    id = params[:id]
+    id    = params[:id]
     board = board.find(id)
     board.save
     redirect_to '/boards', notice: '更新しました。'
@@ -39,7 +38,15 @@ class BoardsController < ApplicationController
 
   private
 
+  def board_params
+    params.require.permit(:board, params[:id])
+  end
+
   def set_board
     @board = Board.find(params[:id])
+  end
+
+  def board_build
+    Board.new
   end
 end
