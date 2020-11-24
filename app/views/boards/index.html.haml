@@ -2,13 +2,13 @@
   .wrap.tabs
     %p.header_text Boards
     .border_room
-    %h1.tabs-text All Boards
-    .tabs-box
-      .task-card
+    %h1.tabs_text All Boards
+    .tabs_box
+      .task_card
         - @boards.each do |board|
           = board.title
             - link_to 'board_path'
-      .add-task
+      .add_board
         - render 'board#new' do
-        .add-new-board +Add new board
+        .add_text +Add new board
 
