@@ -7,6 +7,9 @@ class BoardsController < ApplicationController
 
   def new
     @board = current_user.board_build
+    
+    binding.pry
+    
   end
 
   def create
