@@ -1,12 +1,12 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show]
+  before_action :authenticate_user!
 
   def index
     @boards = Board.all
   end
 
   def new
-    @board = current_user.boards.build
+    @board = current_user.board_build
   end
 
   def create
@@ -20,7 +20,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = Board.find(params[id])
+    @board = Board.find(params[:id])
   end
 
   def update

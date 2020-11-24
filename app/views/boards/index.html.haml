@@ -3,10 +3,12 @@
     %p.header_text Boards
     .border_room
     %h1.tabs-text All Boards
-    .row.tabs-box
-      .col.task-card
+    .tabs-box
+      .task-card
         - @boards.each do |board|
-          - 
-      .col.add-task
-        - link_to board_path do
-          %p.add-new-board +Add new board
+          = board.title
+            - link_to 'board_path'
+      .add-task
+        - render 'board#new' do
+        .add-new-board +Add new board
+
