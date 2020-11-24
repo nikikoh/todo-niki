@@ -1,0 +1,27 @@
+.tabs{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.add-new-board{
+    position: absolute;
+    width: 362px;
+    height: 160px;
+    left: 30px;
+    top: 348px;
+
+    background: #ffffff;
+    border: 1px dashed rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+.tab-box{
+    position: absolute;
+    width: 362px;
+    height: 161px;
+    left: 30px;
+    top: 161px;
+
+    background: #f4f4f4;
+    border-radius: 10px;
+}
