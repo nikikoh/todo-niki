@@ -1,13 +1,17 @@
 .container
-  .wrap.tabs
-    %p.header_text Boards
-    .border_room
-    %h1.tabs_text All Boards
-    .tabs_box
-    .task_card
-      - @boards.each do |board|
-        %p= @board.title
-      - link_to 'board_path'
-    .add_board
-    - render 'form'
-  = link_to "ログアウト", destroy_user_session_path, method: :delete, notice: 'ログアウトできました！'
+  %p.header_text Boards
+  %hr.border_room
+  %h1.tabs_text All Boards
+  .baord_card
+    - @boards.each do |board|
+        = render 'commons/new', baord: board, title: 'sample', content:'sample'
+      .card_content
+        .card_title
+          = board&.title
+  // board_cardクリックしたら↓に飛ぶ実装がベスト
+  //今は問答無用で飛ばされている？
+  // controllerに飛ばされた結果、boardがないよと怒られる
+  - render 'commons/board', board: board
+  .add_board
+  - render 'new'
+= link_to "ログアウト", destroy_user_session_path, method: :delete, notice: 'ログアウトできました！'

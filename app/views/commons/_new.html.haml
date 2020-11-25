@@ -1,0 +1,9 @@
+.container
+  %ul
+    - board.errors.full_messange.each do |message|
+      %li= message
+    = form_with(model: @board, url: board_path(resources), local: true) do |f|
+      %div
+          = f.label :content, '内容'
+      %div
+          = f.text_area :content

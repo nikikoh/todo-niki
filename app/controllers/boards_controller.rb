@@ -1,15 +1,16 @@
 class BoardsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :set_board, only: %i[show edit update]
 
   def index
     @boards = Board.all
+    @board = Board.find(params[:id])
   end
 
   def new
-    @board = current_user.board_build(
-      content: params[:content]
-      user_id: @current_user.id
-    )
+    @board = current_user.board.build(
+      content: params[:content],
+      user_id: @current_user.id)
     @board.save
   end
 
@@ -43,14 +44,10 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(user).permit(:title, :content)
+    params.require(:board).permit(:title, :content)
   end
 
   def set_board
     @board = Board.find(params[:id])
-  end
-
-  def board_build
-    Board.new
   end
 end
