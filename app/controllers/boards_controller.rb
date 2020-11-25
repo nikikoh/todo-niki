@@ -6,10 +6,11 @@ class BoardsController < ApplicationController
   end
 
   def new
-    @board = current_user.board_build
-    
-    binding.pry
-    
+    @board = current_user.board_build(
+      content: params[:content]
+      user_id: @current_user.id
+    )
+    @board.save
   end
 
   def create
@@ -42,7 +43,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require.permit(:board, params[:id])
+    params.require(user).permit(:title, :content)
   end
 
   def set_board

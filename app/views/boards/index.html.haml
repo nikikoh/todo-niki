@@ -4,11 +4,10 @@
     .border_room
     %h1.tabs_text All Boards
     .tabs_box
-      .task_card
-        - @boards.each do |board|
-          = board.title
-            - link_to 'board_path'
-      .add_board
-        - render 'board#new' do
-        .add_text +Add new board
-
+    .task_card
+      - @boards.each do |board|
+        %p= @board.title
+      - link_to 'board_path'
+    .add_board
+    - render 'form'
+  = link_to "ログアウト", destroy_user_session_path, method: :delete, notice: 'ログアウトできました！'
