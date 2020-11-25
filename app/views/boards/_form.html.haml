@@ -2,7 +2,7 @@
   %ul
     / eroors.full_message.each do~ 
     / vallidateした時にエラーメッセージを表示する
-  - board.errors.full_messages.each do |message|
+  - @boards.errors.full_messages.each do |message|
     %li= message
   %h2
 / 入力フォームを作成 form_with(モデル or URLスペース,[scope],[option]) do |f|
