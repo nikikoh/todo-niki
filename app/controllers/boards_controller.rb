@@ -4,6 +4,9 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.all
+    
+    binding.pry
+    
     @board = Board.find(params[:id])
   end
 
