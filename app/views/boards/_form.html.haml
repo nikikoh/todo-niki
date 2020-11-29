@@ -2,14 +2,19 @@
   %ul
     / eroors.full_message.each do~ 
     / vallidateした時にエラーメッセージを表示する
-  - @boards.errors.full_messages.each do |message|
+  - board.errors.full_messages.each do |message|
     %li= message
+
   %h2
-  / 入力フォームを作成 form_with(モデル or URLスペース,[scope],[option]) do |f|
   = form_with(model: board, local: true) do |f|
     %div.table_label
       = f.label :title, 'Name'
       = f.text_field :title
+
     %div.text_field
       =f.label :content, 'Description'
       =f.text_field :content
+
+    %div.submit_btn
+      = f.submit '保存'
+    -link_to root_path

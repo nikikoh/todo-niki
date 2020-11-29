@@ -25,3 +25,26 @@
     background: #f4f4f4;
     border-radius: 10px;
 }
+
+.card_detail{
+    text-decoration: none;
+    position: absolute;
+    width: 362px;
+    height: 160px;
+    left: 30px;
+    top: 348px;
+
+    background: #FFFFFF;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.add-new-board {
+    width: 100%;
+    padding: 100px 0;
+    margin-top: 30px;
+    background: #FFFFFF;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+}

@@ -1,5 +1,7 @@
 class Board < ApplicationRecord
   belongs_to :user
-  validates :title,   presence: true
-  validates :content, presence: true
+  
+  def user
+    User.find(user_id)
+  end
 end
