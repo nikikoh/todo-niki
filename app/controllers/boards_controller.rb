@@ -16,7 +16,10 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = current_user.boards.build
+    @board = Board.new(
+      board_params
+    )
+    @board.user_id = current_user.id
     if @board.save
       redirect_to board_path(@board), notice: '作成しました。'
     else
