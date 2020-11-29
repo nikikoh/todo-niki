@@ -1,17 +1,12 @@
 .container
   %p.header_text Boards
+  -# %img{:src => "/user_images/#{@user.image_name}"}/
+  -# = link_to(@user.name,"users/#{@user.id}")
+
   %hr.border_room
   %h1.tabs_text All Boards
-  .baord_card
+  .card_detail
     - @boards.each do |board|
-        = render 'commons/new', baord: board, title: 'sample', content:'sample'
-      .card_content
-        .card_title
-          = board&.title
-  // board_cardクリックしたら↓に飛ぶ実装がベスト
-  //今は問答無用で飛ばされている？
-  // controllerに飛ばされた結果、boardがないよと怒られる
-  - render 'commons/board', board: board
-  .add_board
-  - render 'new'
-= link_to "ログアウト", destroy_user_session_path, method: :delete, notice: 'ログアウトできました！'
+      = render 'commons/board', board: @board
+    = link_to new_board_path do
+      .add-new-board +Add new board

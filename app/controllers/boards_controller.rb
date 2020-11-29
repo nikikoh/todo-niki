@@ -4,42 +4,40 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.all
-    
-    binding.pry
-    
-    @board = Board.find(params[:id])
+    if @boards
+      @board
+    else
+      :new
+    end
   end
 
   def new
-    @board = current_user.board.build(
-      content: params[:content],
-      user_id: @current_user.id)
-    @board.save
+    @board = Board.new
   end
 
   def create
-    board = Board.new
-    if board.save
-      redirect_to '/boards', notice: '作成しました。'
+    @board = current_user.boards.build
+    if @board.save
+      redirect_to board_path(@board), notice: '作成しました。'
     else
       flash.now[:error] = '作成に失敗しました。'
-      render action: :new
+      render :new
     end
   end
 
   def show
     @board = Board.find(params[:id])
+    @user = User.find(@board.user_id)
   end
 
   def update
-    id    = params[:id]
-    board = board.find(id)
-    board.save
+    @board = board.find(params[:id])
+    @board.save
     redirect_to '/boards', notice: '更新しました。'
   end
 
   def destroy
-    board = board.find(params[:id])
+    @board = board.find(params[:id])
     board.destroy
     redirect_to '/boards', notice: '削除しました。'
   end
@@ -47,7 +45,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:title, :content)
+    params.require(:board).permit(:id, :title, :content)
   end
 
   def set_board

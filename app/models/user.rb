@@ -9,6 +9,11 @@ class User < ApplicationRecord
   validates_uniqueness_of :name
   validates_presence_of :name
 
+  # ユーザーとボードの紐付け
+  def posts
+    Board.where(user_id: id)
+  end
+
   # 登録時にemailを不要とする
   def email_required?
     false
