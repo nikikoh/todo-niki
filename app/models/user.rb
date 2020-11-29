@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         authentication_keys: [:name]
+         authentication_keys: [:user_id]
 
   validates :name,  uniqueness: true
 
@@ -10,8 +10,8 @@ class User < ApplicationRecord
   validates_presence_of :name
 
   # ユーザーとボードの紐付け
-  def posts
-    Board.where(user_id: id)
+  def board_id
+    Board.where(user_id: current_user.id)
   end
 
   # 登録時にemailを不要とする
