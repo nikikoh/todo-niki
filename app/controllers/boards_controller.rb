@@ -1,26 +1,19 @@
 class BoardsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :authenticate_user!
   before_action :set_board, only: %i[show edit update]
 
   def index
     @boards = Board.all
-    if @boards
-      @board
-    else
-      :new
-    end
   end
 
   def new
-    @board = Board.new
+    @board = current_user.boards.build(board_params)
   end
 
   def create
-    @board = Board.new(
-      user_id: current_user.id
-    )
+    @board = current_user.boards.build
     if @board.save
-      redirect_to board_path(@board), notice: '作成しました。'
+      redirect_to root_path(@board), notice: '作成しました。'
     else
       flash.now[:error] = '作成に失敗しました。'
       render :new
@@ -47,7 +40,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:id, :title, :content)
+    params.require(:board).permit(:title, :content)
   end
 
   def set_board
