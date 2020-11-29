@@ -7,6 +7,6 @@
   %h1.tabs_text All Boards
   .card_detail
     - @boards.each do |board|
-      = render 'commons/board', board: @board
+      = render 'commons/board', board: board
     = link_to new_board_path do
       .add-new-board +Add new board
