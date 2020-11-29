@@ -12,9 +12,6 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !current_user.nil?
-    
-    binding.pry
-    
   end
 
   protected
@@ -24,4 +21,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: [:name]
     devise_parameter_sanitizer.permit :sign_in, keys: [:name]
   end
+
 end
