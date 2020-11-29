@@ -11,7 +11,7 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = current_user.boards.build
+    @board = current_user.boards.build(board_params)
     if @board.save
       redirect_to root_path(@board), notice: '作成しました。'
     else
@@ -22,7 +22,6 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
-    @user = User.find(@board.user_id)
   end
 
   def update
