@@ -5,14 +5,9 @@ class User < ApplicationRecord
 
   validates :name,  uniqueness: true
 
-  # usernameを必須とする
-  validates_uniqueness_of :name
-  validates_presence_of :name
-
-  # ユーザーとボードの紐付け
-  def board_id
-    Board.where(user_id: current_user.id)
-  end
+  # user_idを必須とする
+  validates_uniqueness_of :user_id
+  validates_presence_of :user_id
 
   # 登録時にemailを不要とする
   def email_required?
