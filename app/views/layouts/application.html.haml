@@ -11,7 +11,7 @@
       %nav
         - if user_signed_in?
           Logged in as
-          %strong= current_user.user_id
+          %strong= current_user.name
 
           = link_to 'プロフィール変更', edit_user_registration_path
           = link_to 'サインアウト', destroy_user_session_path, method: :delete
