@@ -1,13 +1,18 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_board, only: %i[show edit update]
+  # set_board = Board.find(params[:id])
+  before_action :set_board
 
   def index
     @boards = Board.all
   end
 
+  def show
+    @tasks = @board.tasks
+  end
+
   def new
-    @board = current_user.boards.build(board_params)
+    @board = current_user.boards.build
   end
 
   def create
@@ -20,18 +25,18 @@ class BoardsController < ApplicationController
     end
   end
 
-  def show
-    @board = Board.find(params[:id])
-  end
-
   def update
-    @board = board.find(params[:id])
-    @board.save
-    redirect_to '/boards', notice: '更新しました。'
+    @boards = current_user.boards.find(params[:id])
+    if @baord.update(board_params)
+      redirect_to board_path(@baord), notice: '更新できました'
+    else
+      flash.now[:error] = '更新できませんでした'
+      render :edit
+    end
   end
 
   def destroy
-    @board = board.find(params[:id])
+    @boards = board.find(params[:id])
     board.destroy
     redirect_to '/boards', notice: '削除しました。'
   end
@@ -39,7 +44,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:title, :content)
+    params.require(:board).permit(:title, :content).merge(user_id: current_user.id)
   end
 
   def set_board
