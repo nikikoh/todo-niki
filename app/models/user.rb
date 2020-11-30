@@ -1,15 +1,10 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         authentication_keys: [:user_id]
+         :recoverable, :rememberable, :validatable
 
   has_many :boards, dependent: :destroy
 
   validates :name,  uniqueness: true
-
-  # user_idを必須とする
-  validates_uniqueness_of :user_id
-  validates_presence_of :user_id
 
   def has_written?(board)
     boards.exists?(id: board.id)
