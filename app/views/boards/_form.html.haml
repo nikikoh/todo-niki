@@ -6,7 +6,7 @@
     %li= message
 
   %h2
-  = form_with(model: board, url: user_boards_path, local: true, user_id: @board) do |f|
+  = form_with(model: board, url: boards_path, local: true, user_id: @board) do |f|
     %div.table_label
       = f.label :title, 'Name'
       = f.text_field :title

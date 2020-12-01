@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :name,  uniqueness: true
 
   def has_written?(board)
-    boards.exists?(id: board.id)
+    boards.exists?(id: @board)
   end
   # 登録時にemailを不要とする
   def email_required?

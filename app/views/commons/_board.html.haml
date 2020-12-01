@@ -2,9 +2,9 @@
     .board_detail
         %h3= board&.title
         %p=  board&.content
-            - if user_signed_in? && current_user.has_written?(@board)
-                .dropdown
-                    = image_tag 'sort-down.png', class: 'dropbtn'
-                    .dropdown_content
-                        = link_to '編集する', edit_board_path(@board)
-                        = link_to '削除する', board_path(@board), date: {method: 'delete', conform: '本当に削除しますか？'}
+        - if user_signed_in? && current_user.has_written?(@board)
+            .dropdown
+                = image_tag 'sort-down.png', class: 'dropbtn'
+                .dropdown_content
+                    = link_to '編集する', edit_board_path(@board)
+                    = link_to '削除する', board_path(@board), date: {method: 'delete', conform: '本当に削除しますか？'}

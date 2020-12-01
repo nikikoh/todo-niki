@@ -8,6 +8,6 @@
   .card_detail
     - @boards.each do |board|
       = render 'commons/board', board: board
-    = link_to new_user_board_path(@board) do
+    = link_to new_board_path(@board) do
       .add-new-board +Add new board
       = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
