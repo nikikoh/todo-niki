@@ -1,10 +1,11 @@
 class BoardsController < ApplicationController
   before_action :authenticate_user!
   # set_board = Board.find(params[:id])
-  before_action :set_board
+  before_action :set_board, only: %i[edit update show destroy]
 
   def index
     @boards = Board.all
+    @board = current_user.id
   end
 
   def show
@@ -17,7 +18,7 @@ class BoardsController < ApplicationController
 
   def create
     @board = current_user.boards.build(board_params)
-    if @board.save
+    if @board.save!
       redirect_to root_path(@board), notice: '作成しました。'
     else
       flash.now[:error] = '作成に失敗しました。'

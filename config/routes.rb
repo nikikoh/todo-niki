@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :boards
+    resources :boards, only: %i[index show new create destroy]
   end
 end
