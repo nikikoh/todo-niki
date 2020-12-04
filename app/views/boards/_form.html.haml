@@ -2,19 +2,19 @@
   %ul
     / eroors.full_message.each do~ 
     / vallidateした時にエラーメッセージを表示する
-  - board.errors.full_messages.each do |message|
+  - @board.errors.full_messages.each do |message|
     %li= message
 
   %h2
-  = form_with(model: board, url: boards_path, local: true, user_id: @board) do |f|
+  = form_with(model: @board, local: true) do |f|
     %div.table_label
       = f.label :title, 'Name'
       = f.text_field :title
 
     %div.text_field
       =f.label :content, 'Description'
-      =f.text_field :content
+      =f.text_area :content
 
     %div.submit_btn
       = f.submit '保存'
-    -link_to root_path
+    

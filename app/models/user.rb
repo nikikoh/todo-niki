@@ -3,12 +3,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :boards, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 
-  validates :name,  uniqueness: true
+  validates :name, uniqueness: true
 
-  def has_written?(board)
+  def written?(_board)
     boards.exists?(id: @board)
   end
+
   # 登録時にemailを不要とする
   def email_required?
     false
