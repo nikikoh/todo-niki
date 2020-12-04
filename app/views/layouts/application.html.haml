@@ -10,10 +10,8 @@
     %header
       %nav
         - if user_signed_in?
-          Logged in as
+          ログインしているユーザー
           %strong= current_user.name
-
-          = link_to 'プロフィール変更', edit_user_registration_path
           = link_to 'サインアウト', destroy_user_session_path, method: :delete
         - else
           = link_to 'サインアップ', new_user_registration_path, class:'underbar'

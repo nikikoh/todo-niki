@@ -1,22 +1,12 @@
+@import "_variables";
+
 .tabs{
     font-family: Arial, Helvetica, sans-serif;
     
 }
 
-.add_board{
-    position: absolute;
-    width: 362px;
-    height: 160px;
-    left: 30px;
-    top: 348px;
-
-    background: #ffffff;
-    border: 1px dashed rgba(0,0,0,0.2);
-    border-radius: 10px;
-}
-
 .tab_box{
-    position: absolute;
+    position: relative;
     width: 362px;
     height: 161px;
     left: 30px;
@@ -26,25 +16,57 @@
     border-radius: 10px;
 }
 
-.card_detail{
+.board{
+
+    position: relative;
     text-decoration: none;
-    position: absolute;
-    width: 362px;
-    height: 160px;
-    left: 30px;
-    top: 348px;
 
-    background: #FFFFFF;
-    border: 1px dashed rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-}
+    &_detail{
+        width: 362px;
+        height: 161px;
+        left: 30px;
+        top: 161px;
+        
+        background: #F4F4F4;
+        border-radius: 10px;}
 
-.add-new-board {
-    width: 100%;
-    padding: 100px 0;
-    margin-top: 30px;
-    background: #FFFFFF;
-    border: 1px dashed rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    text-align: center;
+    &_title{
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        /* identical to box height */
+        color: #000000;
+    }
+    &_content{
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 19px;
+        color: #000000;
+
+        mix-blend-mode: normal;
+        opacity: 0.4;
+    }
+
+    &_add{
+        margin-top: 19px;
+        
+        background: #FFFFFF;
+        border: 1px dashed rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        height: 25px;
+
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 25px;
+        /* identical to box height */
+
+        text-align: center;
+        text-decoration: none;
+        color: #000000;
+    }
+    
 }
