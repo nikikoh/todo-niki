@@ -1,12 +1,10 @@
-= link_to boards_path(@board) do
-    .board_detail
-        - if user_signed_in? && current_user.id == board.user_id
-            .board_detail_actions
-                .dropdown
-                    = image_tag 'sort-down.png', class: 'dropbtn'
-                    .dropdown-content.mini
-                        = link_to '編集する', edit_board_path(board)
-                        = link_to '削除する', board_path(board), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
-        // taskに遷移
+- if user_signed_in? && current_user.id == board.user_id
+    .board_detail_actions
+        .dropdown
+            = image_tag 'sort-down.png', class: 'dropbtn'
+            .dropdown-content.mini
+                = link_to '編集する', edit_board_path(board)
+                = link_to '削除する', board_path(board), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
         %h3.board_title=   board.title
         %p.board_content=  board.content
+        = link_to 'タスクを作成する', board_tasks_path(@board)
