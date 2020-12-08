@@ -1,0 +1,12 @@
+.container
+  %p.header_text Boards
+  %hr.border_room
+
+  %h1.tabs_text Brackets
+  - @tasks.each do |task|
+    = render 'commons/task'
+
+  = link_to new_board_task_path(task) do
+    .add_card +Add new task
+
+
