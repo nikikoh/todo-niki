@@ -3,6 +3,7 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.all
+    @board = Board.find(params[:id])
   end
 
   def show
@@ -44,6 +45,6 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:title, :content).merge(user_id: current_user.id, board_id: Board.id)
+    params.require(:board).permit(:title, :content).merge(user_id: current_user.id)
   end
 end
