@@ -7,4 +7,4 @@
                 = link_to '削除する', board_path(board), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
         %h3.board_title=   board.title
         %p.board_content=  board.content
-        = link_to 'タスクを作成する', board_tasks_path(@board.id)
+        = link_to 'タスクを作成する', board_tasks_path(board, task)
