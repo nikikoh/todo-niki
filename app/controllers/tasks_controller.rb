@@ -1,20 +1,21 @@
 class TasksController < ApplicationController
   def index
+    @board = Board.find(params[:id])
+    @task = Board.tasks.find(params[:id])
+    @boards = Board.all
     @tasks = Task.all
-    @board = Board.find(params[:board_id])
-    @task = Board.tasks.find(params[:task_id])
   end
 
   def show
   end
 
   def new
-    board = Board.find(params[:board_id])
+    board = Board.find(params[:id])
     @task = board.tasks.build
   end
 
   def create
-    board = Board.find(params[:board_id])
+    board = Board.find(params[:id])
     @task = board.tasks.build(task_params)
     if @task.save
       redirect_to board_path(board), notice: 'タスクを追加しました'
@@ -25,7 +26,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Board.find(params[:board_id])
+    @task = Board.find(params[:id])
     if @task.update(board_params)
       redirect_to root_path, notice: '更新できました'
     else
