@@ -3,7 +3,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :boards, dependent: :destroy
-<<<<<<< Updated upstream
   has_many :tasks, dependent: :destroy
 
   validates :name, uniqueness: true
@@ -24,6 +23,4 @@ class User < ApplicationRecord
   def will_save_change_to_email?
     false
   end
-=======
->>>>>>> Stashed changes
 end
