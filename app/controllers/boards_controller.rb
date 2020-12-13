@@ -3,7 +3,6 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.all
-    @board = Board.find(params[:id])
   end
 
   def show
