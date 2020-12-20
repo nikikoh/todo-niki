@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :boards, only: %i[index new create edit update destroy] do
-    resources :tasks, only: %i[index new create edit update destroy]
+    member do
+      resources :tasks
+    end
   end
 end

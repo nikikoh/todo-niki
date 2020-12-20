@@ -6,7 +6,8 @@
   - @tasks.each do |task|
     = render 'commons/task'
 
-  = link_to new_board_task_path(task) do
+.container
+  = link_to new_task_path(task) do
     .add_card +Add new task
 
 
