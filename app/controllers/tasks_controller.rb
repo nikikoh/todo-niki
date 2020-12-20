@@ -1,22 +1,22 @@
 class TasksController < ApplicationController
   def index
+    board  = Board.find(params[:id])
     @board = Board.find(params[:id])
-    @task = Board.tasks.find(params[:id])
-    @boards = Board.all
-    @tasks = Task.all
+    @task  = board.task.find(params[:id])
+    @tasks = board.tasks.all
   end
 
   def show
   end
 
   def new
-    board = Board.find(params[:id])
-    @task = board.tasks.build
+    board  = Board.find(params[:id])
+    @task  = board.tasks.build
   end
 
   def create
-    board = Board.find(params[:id])
-    @task = board.tasks.build(task_params)
+    board  = Board.find(params[:id])
+    @task  = board.tasks.build(task_params)
     if @task.save
       redirect_to board_path(board), notice: 'タスクを追加しました'
     else
@@ -26,9 +26,10 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = Board.find(params[:id])
-    if @task.update(board_params)
-      redirect_to root_path, notice: '更新できました'
+    board = Board.find(params[:id])
+    @task = board.task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to tasks_path, notice: '更新できました'
     else
       flash.now[:error] = '更新できませんでした'
       render :new
@@ -36,13 +37,14 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    Task.find(params[:id]).destroy
-    redirect_to board_tasks_path, notice: '削除しました。'
+    board = Board.find(params[:id])
+    board.task.find(params[:id]).destroy
+    redirect_to tasks_path, notice: '削除しました。'
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:title, :content).merge(user_id: current_user.id, board_id: Board.id)
+    params.require(:task).permit(:title, :content).merge(user_id: current_user.id)
   end
 end

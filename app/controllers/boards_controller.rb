@@ -5,15 +5,12 @@ class BoardsController < ApplicationController
     @boards = Board.all
   end
 
-  def show
-  end
-
   def new
-    @board = current_user.boards.build
+    @board = current_user.board.build
   end
 
   def create
-    @board = current_user.boards.build(board_params)
+    @board = current_user.board.build(board_params)
     if @board.save!
       redirect_to root_path(@board), notice: '作成しました。'
     else
