@@ -7,7 +7,6 @@
   %h1.tabs_text All Boards
   - @boards.each do |board|
     = render 'commons/board', board: board
-    = render 'commons/task',  board: board
 
 .container
   = link_to new_board_path(@board) do
