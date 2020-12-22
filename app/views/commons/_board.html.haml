@@ -4,8 +4,8 @@
             .dropdown
                 = image_tag 'sort-down.png', class: 'dropbtn'
                 .dropdown-content.mini
-                    = link_to '編集する', edit_board_path(@board)
-                    = link_to '削除する', board_path(@board), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
+                    = link_to '編集する', edit_board_path(board)
+                    = link_to '削除する', board_path(board), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
     %h3.board_title=   board.title
     %p.board_content=  board.content
-    = render partial: 'commons/contents'
+    = link_to 'タスク一覧を表示する', tasks_path(id: task.id)

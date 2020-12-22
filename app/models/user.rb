@@ -8,11 +8,11 @@ class User < ApplicationRecord
   validates :name, uniqueness: true
 
   def written?(board)
-    boards.exists?(id: @board)
+    boards.exists?(id: board.id)
   end
 
   def has_written?(board)
-    tasks.exists?(board_id: @board)
+    tasks.exists?(id: task.id)
   end
 
   # 登録時にemailを不要とする
