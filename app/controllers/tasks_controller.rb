@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[index new create update destroy]
+  before_action :set_task, only: %i[index new create edit update destroy]
 
   def index
     @tasks = Task.all
@@ -10,7 +10,7 @@ class TasksController < ApplicationController
 
   def new
     @board = Board.find(params[:board_id])
-    @task = @board.tasks.build
+    @task = @board.tasks.build(task_params)
     @task.user = current_user
   end
 
@@ -25,8 +25,13 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+    
+  end
+
   def update
-    @task = board.task.find(params[:id])
+    @board = Board.find(params[:board_id])
+    @task = @board.tasks.find(params[:id])
     if @task.update(task_params)
       redirect_to tasks_path, notice: '更新できました'
     else
