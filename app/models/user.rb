@@ -3,17 +3,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :boards, dependent: :destroy
-<<<<<<< Updated upstream
   has_many :tasks, dependent: :destroy
 
   validates :name, uniqueness: true
 
   def written?(board)
-    boards.exists?(id: @board)
+    boards.exists?(id: board.id)
   end
 
   def has_written?(board)
-    tasks.exists?(board_id: @board)
+    tasks.exists?(id: task.id)
   end
 
   # 登録時にemailを不要とする
@@ -28,6 +27,4 @@ class User < ApplicationRecord
   def will_save_change_to_email?
     false
   end
-=======
->>>>>>> Stashed changes
 end

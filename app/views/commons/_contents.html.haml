@@ -1,5 +1,5 @@
 - @tasks.each do |task|
     .tasks_detail
-        = link_to tasks_path(task)
+        = link_to tasks_path(@task)
         %h3.board_title=   task.title
         %p.board_content=  task.content
