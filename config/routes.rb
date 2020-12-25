@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :boards, only: %i[index new create edit update destroy] do
     member do
-      resources :tasks
+      resources :tasks, only: %i[index new create edit update destory]
     end
   end
 end

@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: %i[show edit update]
+  before_action :set_board, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   def index
@@ -39,7 +39,7 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    set_board.destroy
+    @board.destroy
     redirect_to root_path, notice: '削除しました。'
   end
 

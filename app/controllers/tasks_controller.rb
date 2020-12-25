@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[index new create edit update destroy]
+  before_action :set_task, only: %i[index edit update]
 
   def index
+    
+    binding.pry
+    
+    @boards = Board.all
     @tasks = Task.all
-  end
-
-  def show
   end
 
   def new
@@ -49,7 +50,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content)
+    params.require(:task).permit(:title, :content).merge(user_id: current_user.id, board_id: Board.id)
   end
 
   def set_task
