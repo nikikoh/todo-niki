@@ -1,10 +1,7 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[index edit update]
+  before_action :set_task, only: %i[new edit update]
 
   def index
-    
-    binding.pry
-    
     @boards = Board.all
     @tasks = Task.all
   end
@@ -42,8 +39,8 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    board = Board.find(params[:id])
-    board.task.find(params[:id]).destroy
+    @board = Board.find(params[:board_id])
+    @board.task.find(params[:id]).destroy
     redirect_to tasks_path, notice: '削除しました。'
   end
 
@@ -54,6 +51,7 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = Task.find(params[:id])
+    @board = Board.find(params[:board_id])
+    @task = @board.tasks.find(params[:id])
   end
 end

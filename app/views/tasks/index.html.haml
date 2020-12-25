@@ -7,7 +7,5 @@
     = render 'commons/task'
 
 .container
-  = link_to new_task_path(@task) do
+  = link_to new_task_path, controller: "tasks", action: "new",id: @task do
     .add_card +Add new task
-
-
