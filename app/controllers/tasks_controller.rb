@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[new edit update]
+  before_action :set_task, only: %i[edit update]
 
   def index
     @boards = Board.all
@@ -28,8 +28,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    @board = Board.find(params[:board_id])
-    @task = @board.tasks.find(params[:id])
     if @task.update(task_params)
       redirect_to tasks_path, notice: '更新できました'
     else
