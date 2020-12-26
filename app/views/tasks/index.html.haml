@@ -7,5 +7,9 @@
     = render 'commons/task'
 
 .container
-  = link_to new_task_path(@board.id), controller: "tasks", action: "new" do
+<<<<<<< Updated upstream
+  = link_to new_task_path(@board), controller: "tasks", action: "new" do
+=======
+  = link_to new_task_path(@task, id: params[:id]), controller: "tasks", action: "new" do
+>>>>>>> Stashed changes
     .add_card +Add new task

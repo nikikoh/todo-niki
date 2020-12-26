@@ -2,21 +2,23 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[edit update]
 
   def index
-    @boards = Board.all
     @tasks = Task.all
   end
 
   def new
-    @board = Board.find(params[:board_id])
-    @task = @board.tasks.build(task_params)
+    @task = Task.new(task_params)
+    @task.board_id = params[:board_id]
     @task.user = current_user
   end
 
   def create
-    @board = Board.find(params[:board_id])
-    @task = @board.tasks.build(task_params)
-    if @task.save
-      redirect_to task_path(@task), notice: 'タスクを追加しました'
+    @task = Task.new(task_params)
+    @task.board_id = params[:board_id]
+    
+    binding.pry
+    
+    if @task.save!
+      redirect_to tasks_path(@tasks), notice: 'タスクを追加しました'
     else
       flash.now[:error] = 'タスクを追加できませんでした'
       render :new
@@ -45,7 +47,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content).merge(user_id: current_user.id, board_id: Board.id)
+    params.permit(:task, :title, :content).merge(user_id: current_user.id, board_id: Board.ids)
   end
 
   def set_task

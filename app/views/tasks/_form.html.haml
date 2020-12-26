@@ -1,4 +1,9 @@
 .container
+  %ul
+    / eroors.full_message.each do~ 
+    / vallidateした時にエラーメッセージを表示する
+  - @task.errors.full_messages.each do |message|
+    %li= message
   = render 'layouts/error_messages', model: @task
 
   %h2
@@ -13,4 +18,3 @@
 
     %div.submit_btn
       = f.submit '保存'
-    
