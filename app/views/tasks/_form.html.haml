@@ -1,0 +1,16 @@
+.container
+  = render 'layouts/error_messages', model: @task
+
+  %h2
+  = form_with(model: @task, local: true) do |f|
+    %div.table_label
+      = f.label :title, 'Name'
+      = f.text_field :title
+
+    %div.text_field
+      =f.label :content, 'Description'
+      =f.text_area :content
+
+    %div.submit_btn
+      = f.submit '保存'
+    
