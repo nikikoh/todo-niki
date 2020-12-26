@@ -1,9 +1,6 @@
 .container
   %ul
-    / eroors.full_message.each do~ 
-    / vallidateした時にエラーメッセージを表示する
-  - @board.errors.full_messages.each do |message|
-    %li= message
+     = render 'layouts/error_messages', model: @board
 
   %h2
   = form_with(model: @board, local: true) do |f|

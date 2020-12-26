@@ -14,9 +14,6 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.board_id = params[:board_id]
-    
-    binding.pry
-    
     if @task.save!
       redirect_to tasks_path(@tasks), notice: 'タスクを追加しました'
     else
