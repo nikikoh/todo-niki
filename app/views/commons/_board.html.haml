@@ -8,8 +8,4 @@
                     = link_to '削除する', board_path(board), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
     %h3.board_title=   board.title
     %p.board_content=  board.content
-<<<<<<< Updated upstream
-    = link_to 'タスク一覧を表示する', tasks_path(task), controller: "tasks", action: "index"
-=======
-    = link_to 'タスク一覧を表示する', tasks_path(@tasks)
->>>>>>> Stashed changes
+    = link_to 'タスク一覧を表示する', tasks_path(@tasks), controller: "tasks", action: "index"
