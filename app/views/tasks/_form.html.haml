@@ -4,6 +4,7 @@
     / vallidateした時にエラーメッセージを表示する
   - @task.errors.full_messages.each do |message|
     %li= message
+  = render 'layouts/error_messages', model: @task
 
   %h2
   = form_with(model: @task, local: true) do |f|
