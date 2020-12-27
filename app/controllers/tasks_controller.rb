@@ -13,7 +13,6 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.board_id = params[:board_id]
     if @task.save!
       redirect_to tasks_path(@tasks), notice: 'タスクを追加しました'
     else
@@ -44,7 +43,10 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.permit(:task, :title, :content).merge(user_id: current_user.id, board_id: Board.ids)
+    params.require(:task).permit( :board,
+                                  :title,
+                                  :content).merge(user_id: current_user.id,
+                                                  board_id: Board.ids)
   end
 
   def set_task
