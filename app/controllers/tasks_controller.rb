@@ -13,6 +13,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @tasks = Task.all
     if @task.save!
       redirect_to tasks_path(@tasks), notice: 'タスクを追加しました'
     else
