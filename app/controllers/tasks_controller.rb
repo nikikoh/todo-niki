@@ -44,10 +44,10 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit( :board,
-                                  :title,
-                                  :content).merge(user_id: current_user.id,
-                                                  board_id: Board.ids)
+    params.permit(:task,
+                  :title,
+                  :content).merge(user_id: current_user.id,
+                                  board_id: Board.ids)
   end
 
   def set_task
