@@ -47,7 +47,8 @@ class BoardsController < ApplicationController
 
   def board_params
     params.require(:board).permit(:title,
-                                  :content).merge(user_id: current_user.id)
+                                  :content,
+                                  :board).merge(user_id: current_user.id)
   end
 
   def set_board
