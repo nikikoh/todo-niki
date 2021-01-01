@@ -4,7 +4,6 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.all
-    @tasks = Task.all
   end
 
   def show

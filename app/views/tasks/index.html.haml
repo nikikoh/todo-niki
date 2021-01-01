@@ -7,5 +7,5 @@
     = render 'commons/task'
 
 .container
-  = link_to new_task_path(@task, id: params[:id]), controller: "tasks", action: "new" do
+  = link_to new_board_task_path(board_id: params[:board_id]) do
     .add_card +Add new task
