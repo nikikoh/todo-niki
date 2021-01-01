@@ -4,7 +4,6 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.all
-    @tasks = Task.all
   end
 
   def show
@@ -46,7 +45,9 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:title, :content).merge(user_id: current_user.id)
+    params.require(:board).permit(:title,
+                                  :content,
+                                  :board).merge(user_id: current_user.id)
   end
 
   def set_board
