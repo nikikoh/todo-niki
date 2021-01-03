@@ -1,10 +1,10 @@
 .task_detail
-    - if user_signed_in? && current_user.has_written?(@task)
+    - if user_signed_in? && current_user.has_written?(board_id: board_id, id: @task.id)
         .board_detail_actions
             .dropdown
                 = image_tag 'sort-down.png', class: 'dropbtn'
                 .dropdown-content.mini
-                    = link_to '編集する', edit_board_task_path(task)
-                    = link_to '削除する', board_task_path(task), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
-    %h3.board_title=  @task&.title
-    %p.board_content= @task&.content
+                    = link_to '編集する', edit_board_task_path(@task)
+                    = link_to '削除する', board_task_path(@task), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
+    %h3.board_title=  task.title
+    %p.board_content= task.content
