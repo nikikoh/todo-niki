@@ -11,8 +11,8 @@ class User < ApplicationRecord
     boards.exists?(id: board.id)
   end
 
-  def has_written?(board)
-    tasks.exists?(@task)
+  def has_written?(task)
+    tasks.exists?(task.id)
   end
 
   # 登録時にemailを不要とする
