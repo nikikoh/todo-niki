@@ -12,7 +12,7 @@ class User < ApplicationRecord
   end
 
   def has_written?(task)
-    tasks.exists?(task.id)
+    tasks.exists?(id: task.id)
   end
 
   # 登録時にemailを不要とする

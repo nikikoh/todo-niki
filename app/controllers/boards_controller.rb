@@ -6,9 +6,7 @@ class BoardsController < ApplicationController
     @boards = Board.all
   end
 
-  def show
-    @tasks = @board.tasks
-  end
+  def show; end
 
   def new
     @board = current_user.boards.build
