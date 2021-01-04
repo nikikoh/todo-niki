@@ -1,7 +1,7 @@
 .container
-  = render 'layouts/error_messages', model: f.object
   %h2
   = form_with(model: @task, url: board_tasks_path, local: true) do |f|
+    = render 'layouts/error_messages', model: f.object
     %div.table_label
       = f.label :title, 'Name'
       = f.text_field :title

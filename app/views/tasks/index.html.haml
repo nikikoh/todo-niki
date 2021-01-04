@@ -4,8 +4,8 @@
 
   %h1.tabs_text Brackets
   - @tasks.each do |task|
-    = render 'commons/task'
+    = render 'commons/task', task: task
 
 .container
-  = link_to new_board_task_path(board) do
+  = link_to new_board_task_path(params[:board_id]) do
     .add_card +Add new task
