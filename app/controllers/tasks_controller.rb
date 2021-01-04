@@ -32,6 +32,7 @@ class TasksController < ApplicationController
     # @task = Task.find(params[:id])
     @board = Board.find(params[:board_id])
     @task  = current_user.tasks.find(params[:id])
+
   end
 
   def update
