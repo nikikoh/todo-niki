@@ -1,1 +1,4 @@
-= render 'form', task: task
+.container
+  %h2.header_new Edit Task
+  %hr.border_room
+    = render 'form', url: edit_board_task_path(@board, @task), task: @task
