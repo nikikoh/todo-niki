@@ -1,1 +1,4 @@
-= render 'form', board: @board
+.container
+  %h2.header_new Edit Board
+  %hr.border_room
+    = render 'form', url: edit_board_path(@board), board: @board
