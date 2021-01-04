@@ -2,6 +2,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[edit update]
 
   def index
+    @board = Board.find(params[:board_id])
+    @task = @board.tasks.find(params[:board_id])
     @tasks = Task.all
   end
 
