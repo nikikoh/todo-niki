@@ -1,4 +1,4 @@
 .container
   %h2.header_new New Board
   %hr.border_room
-  = render partial: 'form', board: @board
+  = render partial: 'form', url: new_board_path, board: @board
