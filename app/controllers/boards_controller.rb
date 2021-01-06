@@ -22,20 +22,21 @@ class BoardsController < ApplicationController
   end
 
   def edit
-    @board = current_user.boards.find(params[:id])
+    # set_board
   end
 
   def update
-    @board = current_user.boards.find(params[:id])
+    # set_board
     if @board.update(board_params)
       redirect_to root_path, notice: '更新できました'
     else
       flash.now[:error] = '更新できませんでした'
-      render :new
+      render :edit
     end
   end
 
   def destroy
+    # set_board
     @board.destroy
     redirect_to root_path, notice: '削除しました。'
   end
