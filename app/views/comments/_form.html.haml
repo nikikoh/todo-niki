@@ -1,0 +1,11 @@
+.container
+  %h2
+  = form_with(model: @task, local: true) do |f|
+    = render 'layouts/error_messages', model: f.object
+
+    %div.text_field
+      =f.label :comment, 'Description'
+      =f.text_area :comment
+
+    %div.submit_btn
+      = f.submit '保存'
