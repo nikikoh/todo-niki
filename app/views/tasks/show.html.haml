@@ -1,11 +1,18 @@
 .container
-  %p.header_text Tasks
+  %p.header_text 
   %hr.border_room
 
-  %h1.tabs_text Brackets
-  - @tasks.each do |task|
-    = render 'commons/task', task: task
+  .board_detail
+    %h3.board_title
+      = @task.title
+    %p.board_content
+      = @task.content
+
+    %p コメント一覧
+    - @comments.each do |comment|
+      %h3.board_title
+        = comment.comment
 
 .container
-  = link_to new_board_task_path(@board) do
-    .add_card +Add new task
+  = link_to new_task_comment_path(@task)
+  .add_card + Add new comment

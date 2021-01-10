@@ -5,16 +5,14 @@
             .dropdown
                 = image_tag 'sort-down.png', class: 'dropbtn'
                 .dropdown-content.mini
-                    = link_to '編集する', edit_board_task_path(@board,task)
+                    = link_to '編集する', edit_board_task_path(@board, task)
                     = link_to '削除する', board_task_path(@board, task), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
-    
-    = link_to board_task_path(@board, task),{class: 'board'} do
 
-        %h3.board_title
-            = task.title
+    %h3.board_title
+        = task.title
 
-        %p.board_content
-            = task.content
+    %p.board_content
+        = task.content
 
     = link_to new_task_comment_path(task) do
         .add_card + Add new comment

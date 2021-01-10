@@ -1,14 +1,15 @@
 class CommentsController < ApplicationController
   def new
-    @task = Task.find(params[:task_id])
+    task = Task.find(params[:task_id])
+    @comment = task.comments.build
   end
-  
+
   def create
-    @task    = Task.find(params[:task_id])
-    @comment = @task.comments.build(comment_params)
+    task     = Task.find(params[:task_id])
+    @comment = task.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_to request.referer, notice: 'コメントしました'
+      redirect_to task_path(task), notice: 'コメントしました'
     else
       redirect_to request.referer, notice: 'コメントできませんでした'
     end
@@ -21,7 +22,8 @@ class CommentsController < ApplicationController
     redirect_to request.referer
   end
 
-private
+  private
+
   def comment_params
     params.require(:comment).permit(:comment)
   end

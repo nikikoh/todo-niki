@@ -2,20 +2,17 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[edit update destroy]
 
   def index
-    @board = Board.find(params[:board_id])
+    @tasks = Task.all.order(created_at: :desc)
   end
 
   def show
-    @tasks = Task.all.order(created_at: :desc)
     @task = Task.find(params[:id])
-    @board = Board.find(params[:board_id])
-    @comment = Comment.new
-    @comment = @task.comments
+    @comments = @task.comments
   end
 
   def new
-    @task = Task.new
     @board = Board.find(params[:board_id])
+    @task  = @board.tasks.build
     @task.user = current_user
   end
 
@@ -38,7 +35,7 @@ class TasksController < ApplicationController
   def update
     # set_task
     if @task.update(task_params)
-      redirect_to board_tasks_path(@board), notice: '更新できました'
+      redirect_to task_path(task), notice: '更新できました'
     else
       flash.now[:error] = '更新できませんでした'
       render :edit
@@ -47,9 +44,8 @@ class TasksController < ApplicationController
 
   def destroy
     # set_task
-    @board = Board.find(params[:board_id])
     @task.destroy
-    redirect_to board_tasks_path(@board), notice: '削除しました。'
+    redirect_to task_path(task), notice: '削除しました。'
   end
 
   private
@@ -60,6 +56,6 @@ class TasksController < ApplicationController
 
   def set_task
     @board = Board.find(params[:board_id])
-    @task  = current_user.tasks.find(params[:id])
+    @task = @board.tasks.find(params[:id])
   end
 end
