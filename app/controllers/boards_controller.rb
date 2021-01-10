@@ -1,14 +1,9 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: %i[edit update destroy]
+  before_action :set_board, only: %i[show]
   before_action :authenticate_user!
 
   def index
     @boards = Board.all.order(created_at: :desc)
-  end
-
-  def show
-    @tasks = Task.all.order(created_at: :desc)
-    @task  = Task.find(params[:id])
   end
 
   def new
@@ -24,12 +19,17 @@ class BoardsController < ApplicationController
     end
   end
 
-  def edit
+  def show
     # set_board
+    @tasks = @board.tasks
+  end
+
+  def edit
+    @board = current_user.boards.find(params[:id])
   end
 
   def update
-    # set_board
+    @board = current_user.boards.find(params[:id])
     if @board.update(board_params)
       redirect_to boards_path(@board), notice: '更新できました'
     else
@@ -39,9 +39,9 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    # set_board
-    @board.destroy
-    redirect_to boards_path(@board), notice: '削除しました。'
+    board = current_user.boards.find(params[:id])
+    board.destroy
+    redirect_to boards_path(board), notice: '削除しました。'
   end
 
   private
