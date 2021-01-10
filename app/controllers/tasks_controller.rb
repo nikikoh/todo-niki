@@ -9,16 +9,13 @@ class TasksController < ApplicationController
     @tasks = Task.all.order(created_at: :desc)
     @task = Task.find(params[:id])
     @board = Board.find(params[:board_id])
-<<<<<<< Updated upstream
-    @task  = @board.tasks.find(params[:board_id])
-=======
     @comment = Comment.new
     @comment = @task.comments
->>>>>>> Stashed changes
   end
 
   def new
     @task = Task.new
+    @board = Board.find(params[:board_id])
     @task.user = current_user
   end
 
@@ -35,26 +32,21 @@ class TasksController < ApplicationController
   end
 
   def edit
-    # @task = Task.find(params[:id])
-    @board = Board.find(params[:board_id])
-    @task  = current_user.tasks.find(params[:id])
-
+    # set_task
   end
 
   def update
-    # @task = Task.find(params[:id])
-    @board = Board.find(params[:board_id])
-    @task  = current_user.tasks.find(params[:id])
+    # set_task
     if @task.update(task_params)
       redirect_to board_tasks_path(@board), notice: '更新できました'
     else
       flash.now[:error] = '更新できませんでした'
-      render :new
+      render :edit
     end
   end
 
   def destroy
-    # @task = Task.find(params[:id])
+    # set_task
     @board = Board.find(params[:board_id])
     @task.destroy
     redirect_to board_tasks_path(@board), notice: '削除しました。'
@@ -67,11 +59,7 @@ class TasksController < ApplicationController
   end
 
   def set_task
-<<<<<<< Updated upstream
-    @task = Task.find(params[:id])
-=======
     @board = Board.find(params[:board_id])
-    @task  = Task.find(params[:id])
->>>>>>> Stashed changes
+    @task  = current_user.tasks.find(params[:id])
   end
 end
