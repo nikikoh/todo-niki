@@ -10,48 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_110_092_207) do
+ActiveRecord::Schema.define(version: 2021_01_10_142951) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'boards', force: :cascade do |t|
-    t.bigint 'user_id', null: false
-    t.string 'title', null: false
-    t.text 'content', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['user_id'], name: 'index_boards_on_user_id'
+  create_table "boards", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.text "content", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
-  create_table 'comments', force: :cascade do |t|
-    t.bigint 'user_id', null: false
-    t.bigint 'task_id', null: false
-    t.string 'comment'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.bigint 'board_id'
-    t.index ['task_id'], name: 'index_comments_on_task_id'
-    t.index ['user_id'], name: 'index_comments_on_user_id'
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "task_id", null: false
+    t.string "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "board_id"
+    t.index ["task_id"], name: "index_comments_on_task_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table 'tasks', force: :cascade do |t|
-    t.bigint 'user_id', null: false
-    t.bigint 'board_id', null: false
-    t.string 'title', null: false
-    t.text 'content', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-    t.index ['board_id'], name: 'index_tasks_on_board_id'
-    t.index ['user_id'], name: 'index_tasks_on_user_id'
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "board_id", null: false
+    t.string "title", null: false
+    t.text "content", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["board_id"], name: "index_tasks_on_board_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'name', default: '', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "users", force: :cascade do |t|
+    t.string "encrypted_password", default: "", null: false
+    t.string "name", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "remember_created_at"
   end
 
-  add_foreign_key 'comments', 'tasks'
-  add_foreign_key 'comments', 'users'
+  add_foreign_key "comments", "tasks"
+  add_foreign_key "comments", "users"
 end
