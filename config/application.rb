@@ -11,9 +11,10 @@ module TODO
     # 国際化しました
     config.load_defaults 6.0
     
-    Bundler.require(*Rails.groups)
-
-    Dotenv::Railtie.load
+    if Rails.env.development? || Rails.env.test?
+      Bundler.require(*Rails.groups)
+      Dotenv::Railtie.load
+    end
 
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
