@@ -1,6 +1,6 @@
 .container
   %h2
-  = form_with(model: @task, local: true) do |f|
+  = form_with(model: [@task, @comment], url: task_comment_path, local: true) do |f|
     = render 'layouts/error_messages', model: f.object
 
     %div.text_field

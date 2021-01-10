@@ -2,13 +2,15 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[edit update destroy]
 
   def index
-    @tasks = Task.all.order(created_at: :desc)
     @board = Board.find(params[:board_id])
   end
 
   def show
+    @tasks = Task.all.order(created_at: :desc)
+    @task = Task.find(params[:id])
     @board = Board.find(params[:board_id])
-    @task  = @board.tasks.find(params[:id])
+    @comment = Comment.new
+    @comment = @task.comments
   end
 
   def new

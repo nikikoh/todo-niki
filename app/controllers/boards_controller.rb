@@ -6,7 +6,10 @@ class BoardsController < ApplicationController
     @boards = Board.all.order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    @tasks = Task.all.order(created_at: :desc)
+    @task  = Task.find(params[:id])
+  end
 
   def new
     @board = current_user.boards.build
@@ -15,7 +18,7 @@ class BoardsController < ApplicationController
   def create
     @board = current_user.boards.build(board_params)
     if @board.save
-      redirect_to root_path(@board), notice: '作成しました。'
+      redirect_to boards_path(@board), notice: '作成しました。'
     else
       render :new
     end
@@ -28,7 +31,7 @@ class BoardsController < ApplicationController
   def update
     # set_board
     if @board.update(board_params)
-      redirect_to root_path, notice: '更新できました'
+      redirect_to boards_path(@board), notice: '更新できました'
     else
       flash.now[:error] = '更新できませんでした'
       render :edit
@@ -38,7 +41,7 @@ class BoardsController < ApplicationController
   def destroy
     # set_board
     @board.destroy
-    redirect_to root_path, notice: '削除しました。'
+    redirect_to boards_path(@board), notice: '削除しました。'
   end
 
   private
@@ -49,6 +52,6 @@ class BoardsController < ApplicationController
   end
 
   def set_board
-    @board = current_user.boards.find(params[:id])
+    @board = Board.find(params[:id])
   end
 end
