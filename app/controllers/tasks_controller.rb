@@ -2,13 +2,19 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[edit update destroy]
 
   def index
-    @tasks = Task.all.order(created_at: :desc)
     @board = Board.find(params[:board_id])
   end
 
   def show
+    @tasks = Task.all.order(created_at: :desc)
+    @task = Task.find(params[:id])
     @board = Board.find(params[:board_id])
+<<<<<<< Updated upstream
     @task  = @board.tasks.find(params[:board_id])
+=======
+    @comment = Comment.new
+    @comment = @task.comments
+>>>>>>> Stashed changes
   end
 
   def new
@@ -61,6 +67,11 @@ class TasksController < ApplicationController
   end
 
   def set_task
+<<<<<<< Updated upstream
     @task = Task.find(params[:id])
+=======
+    @board = Board.find(params[:board_id])
+    @task  = Task.find(params[:id])
+>>>>>>> Stashed changes
   end
 end
