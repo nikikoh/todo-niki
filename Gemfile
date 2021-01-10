@@ -45,7 +45,7 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'devise'
+  gem 'devise', '~> 4.7.3'
   gem 'haml-rails'
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
