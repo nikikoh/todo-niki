@@ -10,7 +10,6 @@ module TODO
   class Application < Rails::Application
     # 国際化しました
     config.load_defaults 6.0
-    
     if Rails.env.development? || Rails.env.test?
       Bundler.require(*Rails.groups)
       Dotenv::Railtie.load
