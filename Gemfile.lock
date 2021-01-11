@@ -289,7 +289,7 @@ DEPENDENCIES
   bootstrap
   byebug
   capybara (>= 2.15)
-  devise (~> 4.7.3)
+  devise
   devise-i18n
   devise-i18n-views
   dotenv-rails
