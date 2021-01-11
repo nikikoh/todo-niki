@@ -8,8 +8,8 @@ Bundler.require(*Rails.groups)
 
 module TODO
   class Application < Rails::Application
-
     config.load_defaults 6.0
+
     if Rails.env.development? || Rails.env.test?
       Bundler.require(*Rails.groups)
       Dotenv::Railtie.load
