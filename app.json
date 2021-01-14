@@ -1,0 +1,16 @@
+{
+  "name": "TODO",
+  "description": "This is TODO",
+  "keywords": [],
+  "website": "",
+  "repository": "https://github.com/nikikoh/todo-niki",
+  "env": {},
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "buildpacks": [{
+    "url": "heroku/nodejs"
+  }, {
+    "url": "heroku/ruby"
+  }]
+}

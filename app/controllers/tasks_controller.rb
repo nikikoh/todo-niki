@@ -3,25 +3,16 @@ class TasksController < ApplicationController
 
   def index
     @tasks = Task.all.order(created_at: :desc)
-    @board = Board.find(params[:board_id])
   end
 
   def show
-<<<<<<< Updated upstream
-    @board = Board.find(params[:board_id])
-    @task  = @board.tasks.find(params[:id])
-=======
+    @task = Task.find(params[:id])
     @comments = @task.comments
->>>>>>> Stashed changes
   end
 
   def new
-    @task = Task.new
     @board = Board.find(params[:board_id])
-<<<<<<< Updated upstream
-=======
-    @task = @board.tasks.build
->>>>>>> Stashed changes
+    @task  = @board.tasks.build
     @task.user = current_user
   end
 
@@ -44,6 +35,7 @@ class TasksController < ApplicationController
   def update
     @task = current_user.tasks.find(params[:id])
     if @task.update(task_params)
+      redirect_to task_path(task), notice: '更新できました'
     else
       flash.now[:error] = '更新できませんでした'
       render :edit
