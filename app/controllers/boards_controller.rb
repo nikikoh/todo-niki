@@ -11,21 +11,17 @@ class BoardsController < ApplicationController
     @tasks = @board.tasks
   end
   def new
+    @board = Board.find(params[:id])
     @board = current_user.boards.build
   end
 
   def create
     @board = current_user.boards.build(board_params)
     if @board.save
-      redirect_to boards_path(@board), notice: '作成しました。'
+      redirect_to root_path(@board), notice: '作成しました。'
     else
       render :new
     end
-  end
-
-  def show
-    # set_board
-    @tasks = @board.tasks
   end
 
   def edit
@@ -35,7 +31,7 @@ class BoardsController < ApplicationController
   def update
     @board = current_user.boards.find(params[:id])
     if @board.update(board_params)
-      redirect_to boards_path(@board), notice: '更新できました'
+      redirect_to root_path, notice: '更新できました'
     else
       flash.now[:error] = '更新できませんでした'
       render :edit
@@ -44,15 +40,14 @@ class BoardsController < ApplicationController
 
   def destroy
     board = current_user.boards.find(params[:id])
-    board.destroy
-    redirect_to boards_path(board), notice: '削除しました。'
+    board.destroy!
+    redirect_to root_path, notice: '削除しました。'
   end
 
   private
 
   def board_params
-    params.require(:board).permit(:title,
-                                  :content).merge(user_id: current_user.id)
+    params.require(:board).permit(:title, :content)
   end
 
   def set_board
