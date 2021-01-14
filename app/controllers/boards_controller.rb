@@ -6,7 +6,10 @@ class BoardsController < ApplicationController
     @boards = Board.all.order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    # set_board
+    @tasks = @board.tasks
+  end
 
   def new
     @board = current_user.boards.build
