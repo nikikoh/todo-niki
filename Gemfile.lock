@@ -111,7 +111,7 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    erubi (1.10.0)
+    erubi (1.9.0)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.14.2)
@@ -164,7 +164,6 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.2.3)
-    popper_js (1.16.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -257,6 +256,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
+    uglifier (4.2.0)
+      execjs (>= 0.3.0, < 3)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -286,7 +287,6 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-s3
   bootsnap (>= 1.4.2)
-  bootstrap
   byebug
   capybara (>= 2.15)
   devise
@@ -311,6 +311,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data
+  uglifier
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)

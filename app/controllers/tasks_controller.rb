@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[edit update destroy]
+  before_action :set_task, only: %i[show]
 
   def index
     @tasks = Task.all.order(created_at: :desc)
@@ -18,22 +18,22 @@ class TasksController < ApplicationController
 
   def create
     @board = Board.find(params[:board_id])
-    @task  = @board.tasks.build(task_params)
-    @task.user = current_user
+            @task  = @board.tasks.build(task_params)
+            @task.user = current_user
     if @task.save
-      redirect_to board_tasks_path(@board), notice: 'タスクを追加しました'
+      redirect_to board_path(@board), notice: '追加しました'
     else
-      flash.now[:error] = 'タスクを追加できませんでした'
+      flash.now[:error] = '追加できませんでした'
       render :new
     end
   end
 
   def edit
-    # set_task
+    @task = current_user.tasks.find(params[:id])
   end
 
   def update
-    # set_task
+    @task = current_user.tasks.find(params[:id])
     if @task.update(task_params)
       redirect_to task_path(task), notice: '更新できました'
     else
@@ -43,9 +43,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    # set_task
-    @task.destroy
-    redirect_to task_path(task), notice: '削除しました。'
+    task = current_user.tasks.find(params[:id])
+    board = task.board
+    task.destroy!
+    redirect_to root_path, notice: '削除しました。'
   end
 
   private
@@ -55,7 +56,6 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @board = Board.find(params[:board_id])
-    @task = @board.tasks.find(params[:id])
+    @task  = Task.find(params[:id])
   end
 end
