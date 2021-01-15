@@ -1,13 +1,12 @@
 .container
-  %p.header_text Boards
-  -# %img{:src => "/user_images/#{@user.image_name}"}/
-  -# = link_to(@user.name,"users/#{@user.id}")
-
-  %hr.border_room
+  %div
+    %p.header_text Boards
+    %hr.border_room
+  
   %h1.tabs_text All Boards
   - @boards.each do |board|
     = render 'commons/board', board: board
 
 .container
   = link_to new_board_path do
-    .board_add +Add new board
+    .card_add +Add new board

@@ -1,7 +1,7 @@
-.board_detail
+.card_detail
   %div
     - if user_signed_in? && current_user.has_written?(task)
-      .board_detail_actions
+      .card_detail_actions
         .dropdown
           = image_tag 'sort-down.png', class: 'dropbtn'
           .dropdown-content.mini
@@ -9,8 +9,8 @@
             = link_to '削除する', task_path(task), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
 
   = link_to task_path(task) do
-    %h3.board_title
+    %h3.card_title
       = task.title
 
-  %p.board_content
-    = task.content
+    %p.card_content
+      = task.content

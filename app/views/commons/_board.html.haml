@@ -1,18 +1,17 @@
-.board_detail
-  %duv
+.card_detail
+  %div
+    = link_to board_path(board) do
+      %h3.card_title
+        = board.title
+
+      %p.card_content
+        = board.content
+  %div
     - if user_signed_in? && current_user.written?(board)
-
-      .board_detail_actions
-        .dropdown
-          = image_tag 'sort-down.png', class: 'dropbtn'
-          .dropdown-content.mini
-            = link_to '編集する', edit_board_path(board)
-            = link_to '削除する', board_path(board), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
-
-  = link_to board_path(board) do
-
-    %h3.board_title
-      = board.title
-
-    %p.board_content
-      = board.content
+      %div
+        .card_detail_actions
+          .dropdown
+            = image_tag 'sort-down.png', class: 'dropbtn'
+            .dropdown-content.mini
+              = link_to '編集する', edit_board_path(board)
+              = link_to '削除する', board_path(board), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 

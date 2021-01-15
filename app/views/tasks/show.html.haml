@@ -6,9 +6,9 @@
 
   %p コメント一覧
   - @comments.each do |comment|
-    %h3.board_title
+    %h3.card_title
       = comment.comment
 
-.container
+  .container
   = link_to new_task_comment_path(@task)
   .add_card + Add new comment

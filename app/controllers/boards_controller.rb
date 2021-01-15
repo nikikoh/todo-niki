@@ -11,7 +11,6 @@ class BoardsController < ApplicationController
     @tasks = @board.tasks
   end
   def new
-    @board = Board.find(params[:id])
     @board = current_user.boards.build
   end
 
