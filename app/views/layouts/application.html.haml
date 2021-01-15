@@ -10,7 +10,7 @@
     %header
       %nav
         - if user_signed_in?
-          ログインしているユーザー
+          ユーザー名
           %strong= current_user.name
           = link_to 'サインアウト', destroy_user_session_path, method: :delete
         - else

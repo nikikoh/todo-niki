@@ -1,12 +1,18 @@
 @import './variables';
 
-.underbar{
-    text-decoration: none;
-}
-
 .border_room {
     height: 2px;
     background: #000000;
     mix-blend-mode: normal;
     opacity: 0.1;
+}
+
+.underbar{
+    text-decoration: none;
+}
+
+.header_text{
+    font-size: large;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
