@@ -2,19 +2,7 @@
   %p.header_text 
   %hr.border_room
 
-  .board_detail
-    %div
-    - if user_signed_in? && current_user.has_written?(@task)
-      .board_detail_actions
-        .dropdown
-          = image_tag 'sort-down.png', class: 'dropbtn'
-          .dropdown-content.mini
-            = link_to '編集する', edit_task_path(@task)
-            = link_to '削除する', task_path(@task), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
-    %h3.board_title
-      = @task.title
-    %p.board_content
-      = @task.content
+  = render 'commons/task', task: @task
 
   %p コメント一覧
   - @comments.each do |comment|
