@@ -1,19 +1,4 @@
 .container
   %h2.header_new New Task
   %hr.border_room
-  .container
-  %h2
-  = form_with(model: @task, url: board_tasks_path(@task.board_id), local: true) do |f|
-    = render 'layouts/error_messages', model: f.object
-    %div.table_label
-      = f.label :title, 'Name'
-    %div
-      = f.text_field :title
-
-    %div.text_field
-      =f.label :content, 'Description'
-    %div
-      =f.text_area :content
-
-    = f.submit '保存', class: 'btn btn_primary btn_lg'
-
+  = render partial: 'form', task: @task

@@ -11,8 +11,8 @@ class TasksController < ApplicationController
   end
 
   def new
-    board = Board.find(params[:board_id])
-    @task  = board.tasks.build
+    @board = Board.find(params[:board_id])
+    @task  = @board.tasks.build
     @task.user = current_user
   end
 
@@ -29,7 +29,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    task = current_user.tasks.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   def update
