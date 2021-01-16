@@ -1,16 +1,15 @@
 .card_detail
   %div
     - if user_signed_in? && current_user.has_written?(task)
-      .card_detail_actions
-        .dropdown
-          = image_tag 'sort-down.png', class: 'dropbtn'
-          .dropdown-content.mini
-            = link_to '編集する', edit_task_path(task)
-            = link_to '削除する', task_path(task), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
+      .dropdown
+        = image_tag 'sort-down.png', class: 'dropbtn'
+        .dropdown-content.mini
+          = link_to '編集する', edit_task_path(task)
+          = link_to '削除する', task_path(task), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
 
   = link_to task_path(task) do
-    %h3.card_title
+    .card_title
       = task.title
 
-    %p.card_content
-      = task.content
+    .card_content
+      = task.rich_text_content

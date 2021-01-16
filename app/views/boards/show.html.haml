@@ -1,10 +1,10 @@
 .container
   %p.header_text Tasks
   %hr.border_room
-
-  %h1.tabs_text Brackets
-  - @tasks.each do |task|
-    = render 'commons/task', task: task
+  
+  %div
+    - @tasks.each do |task|
+      = render 'commons/task', task: task
 
 .container
   = link_to new_board_task_path(@board) do
