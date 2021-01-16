@@ -1,14 +1,13 @@
 .container
-  %p.header_text 
+  %p.header_text Task
   %hr.border_room
 
   = render 'commons/task', task: @task
 
   %p コメント一覧
   - @comments.each do |comment|
-    %h3.card_title
-      = comment.comment
+    %h3
+      = comment.content
 
-  .container
-  = link_to new_task_comment_path(@task)
-  .add_card + Add new comment
+  .card_add 
+    = link_to '+ Add new comment', new_task_comment_path(@task)

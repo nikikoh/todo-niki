@@ -7,9 +7,9 @@
     = render 'layouts/error_messages', model: f.object
 
     %div
-      =f.label :comment, 'Description'
+      =f.label :comment, 'コメント'
     %div
-      =f.text_area :comment
+      =f.text_area :content
 
     %div.submit_btn
       = f.submit '保存'
