@@ -1,8 +1,107 @@
 @import './variables';
 
 .card{
-  background-color: white;
-  margin: 16px 0;
-  cursor: pointer;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
+  position: relative;
+
+  &_detail{
+      width: 362px;
+      height: 161px;
+      left: 30px;
+      top: 161px;
+      border: 1px dashed rgba(0, 0, 0, 0.2);
+      
+      background: #F4F4F4;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+  &_title{
+      position: absolute;
+      font-weight: bold;
+      font-size: 20px;
+      /* identical to box height */
+      color: #000000;
+
+      left: 20px;
+  }
+  &_content{
+    position: relative;
+    margin-top: 60px;
+    margin-left: 20px;
+    position: absolute;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #414040;
+
+    mix-blend-mode: normal;
+    opacity: 0.4;
+  }
+
+  &_add{
+    height: 25px;
+    width: 362px;
+    margin-top: 19px;
+    padding: 2px 2px;
+    background: #FFFFFF;
+    border: 1px dashed rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #000000;
+  }
 }
+
+.dropbtn{
+    border: none;
+    width: 20px;
+    height: 20px;
+    left: 325px;
+    margin-top: px;
+
+    position: relative;
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    font-weight: normal;
+    display: none;
+    left: 300px;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  
+    &.mini {
+      min-width: 100px;
+      position: absolute;
+    }
+  }
+  
+  .dropdown-content a {
+    padding: 6px 16px;
+    text-decoration: none;
+    display: block;
+    color: $text-base-color;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: white;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    top: 20px;
+    left: 260px;
+  }
